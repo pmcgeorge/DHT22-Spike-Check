@@ -15,9 +15,9 @@ while temperature == 100:
     humidity, temperature = Adafruit_DHT.read_retry(sensor, pin)
 
     if humidity > 1000:
-    #quit()
         temperature = 100
-
+    time.sleep(1)
+    
 # Un-comment the line below to convert the temperature to Fahrenheit.
 Temp = temperature * 9/5.0 + 32
 
