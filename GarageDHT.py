@@ -16,6 +16,7 @@ while temperature == 100:
 
     if humidity > 1000:
         temperature = 100
+    #Pause 1 second so we don't hit sensor to fast
     time.sleep(1)
     
 # Un-comment the line below to convert the temperature to Fahrenheit.
