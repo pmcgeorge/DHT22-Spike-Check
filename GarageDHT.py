@@ -17,6 +17,7 @@ while temperature == 100:
 
     if humidity > 1000:
         temperature = 100
+        #Log the error for tracking
         print "Humidity over 1000! on", (time.strftime("%b %d %Y @ %H:%M:%S"))
         time.sleep(1)
 
