@@ -11,14 +11,16 @@ cputemp = cpuT/1000 * 1.8 + 32
 
 temperature = 100
 
+#while True:
 while temperature == 100:
     humidity, temperature = Adafruit_DHT.read_retry(sensor, pin)
 
     if humidity > 1000:
         temperature = 100
-    #Pause 1 second so we don't hit sensor to fast
-    time.sleep(1)
-    
+        print "Humidity over 1000! on", (time.strftime("%b %d %Y @ %H:%M:%S"))
+        time.sleep(1)
+
+
 # Un-comment the line below to convert the temperature to Fahrenheit.
 Temp = temperature * 9/5.0 + 32
 
@@ -31,7 +33,8 @@ Temp = temperature * 9/5.0 + 32
 #   print "cputemp = %sF" %(cputemp)
 
 if humidity is not None and temperature is not None:
-    #print('Temp={0:0.1f}*F {1:0.1f}*C Humidity={2:0.1f}%'.format(Temp, temperature, humidity))
+
+    #print('Temp={0:0.1f}*F Humidity={1:0.1f}%'.format(Temp, humidity))
 
     fd = open('/home/pi/sensorSMB/DHTsensor.txt','w')
     #fd.write(time.strftime("%H:%M:%S "))
