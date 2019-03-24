@@ -6,4 +6,4 @@ Seems noise related and I continue to seek out the source.
 
 In the mean time this script sets the Temp to 100C if it sees a Humidity Spike and then reruns the sensor querry.
 
- 
+filepile.py is the weewx user file to read the data from the .txt file 
