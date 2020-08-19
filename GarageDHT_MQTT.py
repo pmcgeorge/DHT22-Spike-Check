@@ -7,11 +7,11 @@ sensor = Adafruit_DHT.DHT22
 pin = 23
 
 #MQTT Settings
-mqtt_server = "BROKER_IP"
+mqtt_server = "192.168.0.22"
 mqtt_port = 1883
 mqtt_topic1 = "sensors/garage/Gtemp"
 mqtt_topic2 = "sensors/garage/Ghumid"
-Interval = 20
+Interval = 15
 
 def on_connect(client, userdata, flags, rc):
     if rc==0:
@@ -39,7 +39,7 @@ try:
         while temperature == 100:
             humidity, temperature = Adafruit_DHT.read_retry(sensor, pin)
 
-            if humidity > 1000:
+            if humidity > 200 or humidity < 0 or temperature > 50 or temperature < -25:
                 temperature = 100
                 time.sleep(1)
 
@@ -47,7 +47,7 @@ try:
 # Un-comment the line below to convert the temperature to Fahrenheit.
         Temp = '{:.2f}'.format(9.0 / 5.0 * temperature + 32)
 
-
+        
         humidity = '{:.2f}'.format(humidity)
 
 # Note that sometimes you won't get a reading and
